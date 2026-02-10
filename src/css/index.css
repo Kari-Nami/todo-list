@@ -1,7 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --window-margin: 4rem;
   --border-radius: 10px;
   --menu-height: 10rem;
+
+  --window-height: calc(100vh - 16px);
+  --window-width: calc(100vw - 16px);
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

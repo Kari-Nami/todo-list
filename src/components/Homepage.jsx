@@ -47,7 +47,9 @@ function Homepage() {
                 </motion.button>
             </motion.div>
 
-            <Board/>
+            <div className={"board-container"}>
+                <Board/>
+            </div>
 
             {/* temporary list of tasks */}
             {/*<ul className={"task-list"}>*/}
