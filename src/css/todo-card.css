@@ -1,0 +1,13 @@
+.task {
+    background-color: #ca79a8;
+    min-width: 15rem;
+    min-height: 5rem;
+
+    text-align: center;
+    align-content: center;
+
+    border-radius: var(--border-radius);
+    margin-top: 15px;
+
+    box-shadow: 0 0.2rem 10px #413747;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from "motion/react";
-import './todo-card.css'
+import '../css/todo-card.css'
 
 export const TodoCard = ( {task} ) => {
 
