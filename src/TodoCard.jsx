@@ -2,27 +2,25 @@ import React from 'react'
 import { motion } from "motion/react";
 import './todo-card.css'
 
-const container = {
-    hidden: {opacity: 0},
-    visible: {opacity: 1, transition: {staggerChildren: 1}}
-}
+export const TodoCard = ( {task} ) => {
 
-const item = {
-    hidden: {opacity: 0, x: -10},
-    visible: {opacity: 1, x: 0}
-}
-
-export const TodoCard = () => {
-
-    const features = ["fast", "fun", "slow", "boring"]
+    const item = {
+        hidden: {scale: 1.05},
+        visible: {scale: 1}
+    }
 
     return (
-        <motion.ul variants={container} initial="hidden" animate="visible">
-            {features.map((feature) => (
-                <motion.li key={feature} variants={item}>
-                    {feature}
-                </motion.li>
-            ))}
-        </motion.ul>
+        <motion.div
+            className={'task'}
+            key={task.id}
+            variants={item}
+            initial="hidden"
+            animate="visible"
+            whileHover={{ scale: 1.05, y: -5 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            layout
+        >
+            {task.name}
+        </motion.div>
     )
 }
