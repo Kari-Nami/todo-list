@@ -1,0 +1,12 @@
+.board {
+    background-color: brown;
+
+    margin-top: var(--menu-height);
+    box-sizing: border-box;
+
+    width: calc(100vw - var(--window-margin));
+
+    display: flex;
+    align-items: center;
+    align-content: center;
+}

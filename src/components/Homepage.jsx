@@ -3,6 +3,7 @@ import {motion} from "motion/react"
 import React from "react";
 import {useState} from "react";
 import {TodoCard} from "./TodoCard.jsx";
+import {Board} from "./Board.jsx";
 
 const container = {
     hidden: {opacity: 0},
@@ -30,8 +31,8 @@ function Homepage() {
             {/* menu at the top */}
             <motion.div
                 className={"menu-container"}
-                initial={{ y: -10 }}
-                animate={{ y: 0 }}
+                initial={{ opacity: 0.2, y: -10 }}
+                animate={{ opacity: 1,  y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
             >
                 <h1> To-do List </h1>
@@ -46,7 +47,7 @@ function Homepage() {
                 </motion.button>
             </motion.div>
 
-            <div/>
+            <Board/>
 
             {/* temporary list of tasks */}
             {/*<ul className={"task-list"}>*/}
