@@ -4,7 +4,7 @@ import '../css/board.css'
 export const Board = () => {
     return (
         <div className={"board"}>
-            Board
+            <img src={"src/assets/board_bg.png"}  alt={"board background"}/>
         </div>
     )
 }
