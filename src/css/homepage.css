@@ -1,6 +1,6 @@
 .homepage-container {
-  width: var(--window-width);
-  height: var(--window-height);
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 
   display: flex;
@@ -8,14 +8,11 @@
 }
 
 .menu-container {
-  width: 100vw;
+  width: 100%;
   height: var(--menu-height);
   box-sizing: border-box;
 
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
+  z-index: 10;
   flex: 0 0 auto;
 
   background-color: #624963;
@@ -27,7 +24,10 @@
 
 .board-container {
   flex: 1;
-  padding: 20px 10px 10px 10px;
+  padding: 20px;
+
+  min-height: 0;
+  width: 100%;
 }
 
 h1 {

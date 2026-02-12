@@ -4,13 +4,18 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 :root {
   --window-margin: 4rem;
   --border-radius: 10px;
   --menu-height: 10rem;
-
-  --window-height: calc(100vh - 16px);
-  --window-width: calc(100vw - 16px);
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -25,7 +30,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  display: flex;
-  place-content: center;
-  justify-content: center;
+  /*display: flex;*/
+  /*place-content: center;*/
+  /*justify-content: center;*/
 }
