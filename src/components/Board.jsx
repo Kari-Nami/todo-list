@@ -9,7 +9,7 @@ export const Board = ({ tasks }) => {
              {/*temporary list of tasks */}
             <ul className={"task-list"}>
                 {tasks.map((task) => (
-                    < TodoCard task={task}/>
+                    <TodoCard task={task}/>
                 ))}
             </ul>
         </div>

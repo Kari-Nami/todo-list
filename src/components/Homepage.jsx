@@ -1,17 +1,21 @@
 import '../css/homepage.css'
 import {motion} from "motion/react"
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Board} from "./Board.jsx";
-import {TodoCard} from "./TodoCard.jsx";
-
-const container = {
-    hidden: {opacity: 0},
-    visible: {opacity: 1, transition: {staggerChildren: 0.1}}
-}
+import tasks_json from '../tasks.json'
 
 function Homepage() {
 
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState(() => {
+        const saved = localStorage.getItem('tasks')
+
+        if (saved) { return JSON.parse(saved) }
+        else { return tasks_json }
+    })
+
+    useEffect(() => {
+        localStorage.setItem('tasks', JSON.stringify(tasks))
+    }, [tasks]);
 
     const addTask = () => {
         const taskId = Date.now()
