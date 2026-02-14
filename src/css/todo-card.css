@@ -9,5 +9,5 @@
     border-radius: var(--border-radius);
     margin-top: 15px;
 
-    box-shadow: 0 0.2rem 10px #413747;
+    box-shadow: 0 0.2rem 10px rgba(0, 0, 0, 0.3);
 }

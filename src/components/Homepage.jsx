@@ -1,7 +1,8 @@
 import '../css/homepage.css'
 import {motion} from "motion/react"
-import React from "react";
+import React, {useState} from "react";
 import {Board} from "./Board.jsx";
+import {TodoCard} from "./TodoCard.jsx";
 
 const container = {
     hidden: {opacity: 0},
@@ -9,6 +10,8 @@ const container = {
 }
 
 function Homepage() {
+
+    const [tasks, setTasks] = useState([])
 
     const addTask = () => {
         const taskId = Date.now()
@@ -44,7 +47,7 @@ function Homepage() {
             </motion.div>
 
             <div className={"board-container"}>
-                <Board/>
+                <Board tasks={tasks}/>
             </div>
         </div>
     )
