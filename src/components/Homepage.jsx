@@ -28,6 +28,10 @@ function Homepage() {
         setTasks([...tasks, newTask])
     }
 
+    const deleteTask = (taskId) => {
+        setTasks( tasks.filter((task) => task.id !== taskId) )
+    }
+
     return (
         <div className={"homepage-container"}>
 
@@ -51,7 +55,7 @@ function Homepage() {
             </motion.div>
 
             <div className={"board-container"}>
-                <Board tasks={tasks}/>
+                <Board tasks={tasks} deleteFunction={deleteTask}/>
             </div>
         </div>
     )

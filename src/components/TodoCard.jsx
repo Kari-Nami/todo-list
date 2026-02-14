@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from "motion/react";
 import '../css/todo-card.css'
 
-export const TodoCard = ( {task} ) => {
+export const TodoCard = ({ task, deleteTask }) => {
 
     const item = {
         hidden: {scale: 1.05},
@@ -21,6 +21,9 @@ export const TodoCard = ( {task} ) => {
             layout
         >
             {task.name}
+            <button onClick={() => deleteTask(task.id)}>
+                Delete
+            </button>
         </motion.div>
     )
 }

@@ -2,14 +2,14 @@ import React, {useState} from 'react'
 import '../css/board.css'
 import {TodoCard} from "./TodoCard.jsx";
 
-export const Board = ({ tasks }) => {
+export const Board = ({ tasks, deleteFunction }) => {
 
     return (
         <div className={"board"}>
              {/*temporary list of tasks */}
             <ul className={"task-list"}>
                 {tasks.map((task) => (
-                    <TodoCard task={task}/>
+                    <TodoCard task={task} deleteTask={deleteFunction}/>
                 ))}
             </ul>
         </div>
