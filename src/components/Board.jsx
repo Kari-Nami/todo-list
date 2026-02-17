@@ -2,18 +2,16 @@ import React, {useRef, useState} from 'react'
 import '../css/board.css'
 import {TodoCard} from "./TodoCard.jsx";
 
-export const Board = ({ tasks, deleteFunction, updateLocation }) => {
-
-    const boardConstraintsRef = useRef(null)
+export const Board = ({ tasks, deleteFunction, updateLocation, boardRef }) => {
 
     return (
-        <div className={"board"} ref={boardConstraintsRef}>
+        <div className={"board"} ref={boardRef}>
             {tasks.map((task) => (
                 <TodoCard
                     key={task.id}
                     task={task}
                     deleteTask={deleteFunction}
-                    constraints={boardConstraintsRef}
+                    constraints={boardRef}
                     updateLocation={updateLocation}
                 />
             ))}

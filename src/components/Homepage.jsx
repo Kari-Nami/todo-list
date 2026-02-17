@@ -1,6 +1,6 @@
 import '../css/homepage.css'
 import {motion} from "motion/react"
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Board} from "./Board.jsx";
 import tasks_json from '../tasks.json'
 
@@ -18,14 +18,32 @@ function Homepage() {
         localStorage.setItem('tasks', JSON.stringify(tasks))
     }, [tasks]);
 
+    const boardReference = useRef(null)
+
     const addTask = () => {
         const taskId = Date.now()
+
+        const task_w = 150
+        const task_h = 150
+
+        let x = 0
+        let y = 0
+
+        if (boardReference.current) {
+            const boardDimensions = boardReference.current.getBoundingClientRect()
+
+            x = (boardDimensions.width/2) - (task_w/2)
+            y = (boardDimensions.height/2) - (task_h/2)
+
+        }
 
         const newTask = {
             id: taskId,
             name: "task",
-            x: style,
-            y: 0
+            x: x,
+            y: y,
+            w: task_w,
+            h: task_h
         }
 
         setTasks([...tasks, newTask])
@@ -74,6 +92,7 @@ function Homepage() {
                     tasks={tasks}
                     deleteFunction={deleteTask}
                     updateLocation={updateLocation}
+                    boardRef={boardReference}
                 />
             </div>
         </div>

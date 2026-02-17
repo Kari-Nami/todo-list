@@ -28,7 +28,12 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation }) => {
                 updateLocation(task.id, info.offset)
             }}
 
-            style={{x: task.x, y: task.y} }
+            style={{
+                x: task.x,
+                y: task.y,
+                width: task.w,
+                height: task.h
+        }}
         >
             {task.name} - {task.id}
             <button onClick={() => deleteTask(task.id)}>
