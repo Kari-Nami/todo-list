@@ -65,6 +65,15 @@ function Homepage() {
         )
     }
 
+    const resize = (id, newSize) => {
+        setTasks((oldTasks) => oldTasks.map((task) => {
+            if (task.id === id) {
+                return { ...task, w: newSize.w, h: newSize.h }
+            }
+            return task
+        }))
+    }
+
     return (
         <div className={"homepage-container"}>
 
@@ -93,6 +102,7 @@ function Homepage() {
                     deleteFunction={deleteTask}
                     updateLocation={updateLocation}
                     boardRef={boardReference}
+                    resize={resize}
                 />
             </div>
         </div>

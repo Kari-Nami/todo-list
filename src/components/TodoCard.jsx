@@ -2,12 +2,15 @@ import React, {useState} from 'react'
 import { motion } from "motion/react";
 import '../css/todo-card.css'
 
-export const TodoCard = ({ task, deleteTask, constraints, updateLocation }) => {
+export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize }) => {
 
     const animations = {
         hidden: {scale: 1.05},
         visible: {scale: 1}
     }
+
+    const width = task.w
+    const height = task.h
 
     return (
         <motion.div
@@ -31,14 +34,35 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation }) => {
             style={{
                 x: task.x,
                 y: task.y,
-                width: task.w,
-                height: task.h
+                width: width,
+                height: height
         }}
         >
-            {task.name} - {task.id}
-            <button onClick={() => deleteTask(task.id)}>
-                Delete
-            </button>
+            <div className='task-content'>
+                {task.name} - {task.id}
+                <button
+                    onPointerDown={(e) => e.stopPropagation()}
+                    onClick={() => deleteTask(task.id)}
+                >
+                    Delete
+                </button>
+            </div>
+            <motion.div
+                className='resize-handle'
+                drag
+                dragMomentum={false}
+                dragElastic={0}
+                dragConstraints={{top: 0, left: 0, right: 0, bottom: 0}}
+
+                onPointerDown={(e) => e.stopPropagation()}
+
+                onDrag={(event, info) => {
+                    const new_w = width + info.delta.x
+                    const new_h = height + info.delta.y
+
+                    resize(task.id, {w: new_w, h: new_h})
+                }}
+            />
         </motion.div>
     )
 }
