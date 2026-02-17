@@ -1,4 +1,4 @@
 [
-  { "id": 1, "name": "task1" },
-  { "id": 2, "name": "task2" }
+  { "id": 1, "name": "task1", "x": 10, "y": 10 },
+  { "id": 2, "name": "task2", "x": 50, "y": 70 }
 ]

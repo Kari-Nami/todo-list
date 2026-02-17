@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { motion } from "motion/react";
 import '../css/todo-card.css'
 
-export const TodoCard = ({ task, deleteTask }) => {
+export const TodoCard = ({ task, deleteTask, constraints, updateLocation }) => {
 
     const animations = {
         hidden: {scale: 1.05},
@@ -22,8 +22,13 @@ export const TodoCard = ({ task, deleteTask }) => {
 
             drag
             dragMomentum={false}
-            dragConstraints={{top: -10, left: -100, bottom: 500, right: 100}}
+            dragConstraints={constraints}
             dragElastic={0}
+            onDragEnd={(event, info) => {
+                updateLocation(task.id, info.offset)
+            }}
+
+            style={{x: task.x, y: task.y} }
         >
             {task.name} - {task.id}
             <button onClick={() => deleteTask(task.id)}>

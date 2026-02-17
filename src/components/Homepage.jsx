@@ -9,9 +9,9 @@ function Homepage() {
     const [tasks, setTasks] = useState(() => {
         const saved = localStorage.getItem('tasks')
 
-        // if (saved) { return JSON.parse(saved) }
-        // else { }
-        return tasks_json
+        if (saved) { return JSON.parse(saved) }
+        else { return tasks_json }
+        // return tasks_json
     })
 
     useEffect(() => {
@@ -23,7 +23,9 @@ function Homepage() {
 
         const newTask = {
             id: taskId,
-            name: "task"
+            name: "task",
+            x: 0,
+            y: 0
         }
 
         setTasks([...tasks, newTask])
@@ -31,6 +33,18 @@ function Homepage() {
 
     const deleteTask = (taskId) => {
         setTasks( tasks.filter((task) => task.id !== taskId) )
+    }
+
+    const updateLocation = (id, offset) => {
+
+        setTasks(
+            (oldTasks) => oldTasks.map((task) => {
+                if (task.id === id) {
+                    return { ...task, x: task.x + offset.x, y: task.y + offset.y }
+                }
+                return task
+            })
+        )
     }
 
     return (
@@ -56,7 +70,11 @@ function Homepage() {
             </motion.div>
 
             <div className={"board-container"}>
-                <Board tasks={tasks} deleteFunction={deleteTask}/>
+                <Board
+                    tasks={tasks}
+                    deleteFunction={deleteTask}
+                    updateLocation={updateLocation}
+                />
             </div>
         </div>
     )
