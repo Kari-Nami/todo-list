@@ -1,7 +1,5 @@
 .board {
     background-color: #74452f;
-
-    /*margin-top: var(--menu-height);*/
     box-sizing: border-box;
     overflow: hidden;
 
@@ -9,6 +7,7 @@
 
     width: 100%;
     height: 100%;
+    min-height: 60vh;
 
     position: relative;
 
@@ -25,4 +24,18 @@
     background-repeat: repeat;
 
     z-index: 0;
+}
+
+.task-list {
+    margin-top: var(--menu-height);
+    padding: 0;
+
+    outline: white 1px;
+
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+
+    height: 100%;
 }

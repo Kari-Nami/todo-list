@@ -1,17 +1,24 @@
-import React, {useState} from 'react'
+import React, {useRef, useState} from 'react'
 import '../css/board.css'
 import {TodoCard} from "./TodoCard.jsx";
 
 export const Board = ({ tasks, deleteFunction }) => {
 
+    const reference = useRef(null)
+
     return (
-        <div className={"board"}>
-             {/*temporary list of tasks */}
-            <ul className={"task-list"}>
+        <div className={"board"} ref={reference}>
+            {/*temporary list of tasks */}
+            <div className={"task-list"}>
                 {tasks.map((task) => (
-                    <TodoCard task={task} deleteTask={deleteFunction}/>
+                    <TodoCard
+                        key={task.id}
+                        task={task}
+                        deleteTask={deleteFunction}
+                        boardConstraints={reference}
+                    />
                 ))}
-            </ul>
+            </div>
         </div>
     )
 }

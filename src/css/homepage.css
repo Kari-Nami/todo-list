@@ -50,10 +50,8 @@ h1 {
   background-color: #ca79a8;
 }
 
-.task-list {
-  margin-top: var(--menu-height);
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  padding: 0;
+.deleted_item{
+  height: 0.1px;!important;
+  opacity: 0;!important;
+  transition: all 0.2s ease;
 }

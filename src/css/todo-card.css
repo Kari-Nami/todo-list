@@ -2,6 +2,7 @@
     background-color: #ca79a8;
     min-width: 15rem;
     min-height: 5rem;
+    /*position: absolute;*/
 
     text-align: center;
     align-items: center;
@@ -14,4 +15,17 @@
 
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+
+    padding: 0.5rem 0;
+}
+
+.task-delete-button {
+    padding: 0 1rem;
+    background: #624963;
+    border: transparent;
+    border-radius: 2rem;
+}
+.task-delete-button:hover {
+    background: #413747;
 }

@@ -29,7 +29,12 @@ function Homepage() {
     }
 
     const deleteTask = (taskId) => {
-        setTasks( tasks.filter((task) => task.id !== taskId) )
+        const buttonToDelete = document.querySelector(`[data-testid="${taskId}"]`)
+        buttonToDelete.classList.add("deleted_item")
+        setTimeout(()=>{
+            setTasks( tasks.filter((task) => task.id !== taskId) )
+        },3000)
+
     }
 
     return (
