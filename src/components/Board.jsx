@@ -6,12 +6,9 @@ export const Board = ({ tasks, deleteFunction }) => {
 
     return (
         <div className={"board"}>
-             {/*temporary list of tasks */}
-            <ul className={"task-list"}>
-                {tasks.map((task) => (
-                    <TodoCard task={task} deleteTask={deleteFunction}/>
-                ))}
-            </ul>
+            {tasks.map((task) => (
+                <TodoCard task={task} deleteTask={deleteFunction}/>
+            ))}
         </div>
     )
 }
