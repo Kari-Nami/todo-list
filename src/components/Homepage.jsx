@@ -24,7 +24,7 @@ function Homepage() {
         const newTask = {
             id: taskId,
             name: "task",
-            x: 0,
+            x: style,
             y: 0
         }
 
