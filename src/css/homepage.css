@@ -49,9 +49,3 @@ h1 {
 .create-button:hover {
   background-color: #ca79a8;
 }
-
-.deleted_item{
-  height: 0.1px;!important;
-  opacity: 0;!important;
-  transition: all 0.2s ease;
-}

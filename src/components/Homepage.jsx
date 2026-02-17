@@ -9,8 +9,9 @@ function Homepage() {
     const [tasks, setTasks] = useState(() => {
         const saved = localStorage.getItem('tasks')
 
-        if (saved) { return JSON.parse(saved) }
-        else { return tasks_json }
+        // if (saved) { return JSON.parse(saved) }
+        // else { }
+        return tasks_json
     })
 
     useEffect(() => {
@@ -29,12 +30,7 @@ function Homepage() {
     }
 
     const deleteTask = (taskId) => {
-        const buttonToDelete = document.querySelector(`[data-testid="${taskId}"]`)
-        buttonToDelete.classList.add("deleted_item")
-        setTimeout(()=>{
-            setTasks( tasks.filter((task) => task.id !== taskId) )
-        },3000)
-
+        setTasks( tasks.filter((task) => task.id !== taskId) )
     }
 
     return (

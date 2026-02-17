@@ -25,7 +25,7 @@ export const TodoCard = ({ task, deleteTask }) => {
             dragConstraints={{top: -10, left: -100, bottom: 500, right: 100}}
             dragElastic={0}
         >
-            {task.name}{task.id}
+            {task.name} - {task.id}
             <button onClick={() => deleteTask(task.id)}>
                 Delete
             </button>
