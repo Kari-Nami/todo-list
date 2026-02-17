@@ -40,6 +40,7 @@ function Homepage() {
         const newTask = {
             id: taskId,
             name: "task",
+            content: "lorem ipsum duralam haha",
             x: x,
             y: y,
             w: task_w,

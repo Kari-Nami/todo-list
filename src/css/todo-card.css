@@ -1,7 +1,6 @@
 .task {
     --corner-size: 25px;
 
-    text-align: center;
     align-items: center;
     align-content: center;
 
@@ -12,10 +11,40 @@
     display: flex;
     flex-direction: column;
 
+    min-width: fit-content;
+    min-height: fit-content;
+
     position: absolute;
 }
 .task:hover {
     filter: drop-shadow( 0 0.2rem 10px rgba(0, 0, 0, 0.4) );
+    transition: filter 0.3s;
+}
+
+.task-content {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    width: 100%;
+    height: 100%;
+    min-height: fit-content;
+
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.task h2 {
+    cursor: text;
+    margin: 0;
+}
+
+.task p {
+    cursor: text;
+    padding: 0 0 1rem 0;
+    text-align: center;
 }
 
 .resize-handle {
@@ -30,4 +59,5 @@
     right: 0;
 
     cursor: se-resize;
+    z-index: 10;
 }

@@ -20,7 +20,7 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
             initial="hidden"
             animate="visible"
 
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, cursor: "grab" }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
 
             drag
@@ -30,6 +30,7 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
             onDragEnd={(event, info) => {
                 updateLocation(task.id, info.offset)
             }}
+            whileTap={{cursor: "grabbing"}}
 
             style={{
                 x: task.x,
@@ -39,7 +40,8 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
         }}
         >
             <div className='task-content'>
-                {task.name} - {task.id}
+                <h2>{task.name}</h2>
+                <p>{task.content}</p>
                 <button
                     onPointerDown={(e) => e.stopPropagation()}
                     onClick={() => deleteTask(task.id)}
