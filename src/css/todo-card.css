@@ -1,15 +1,13 @@
 .task {
     --corner-size: 25px;
 
-    align-items: center;
-    align-content: center;
-
     background: linear-gradient( 135deg, #ca79a8 calc(100% - var(--corner-size) * 0.7), transparent 0 );
 
     filter: drop-shadow( 0 0.2rem 10px rgba(0, 0, 0, 0.2) );
 
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    align-content: center;
 
     min-width: fit-content;
     min-height: fit-content;
@@ -33,7 +31,6 @@
     align-content: center;
     align-items: center;
     justify-content: space-between;
-
 }
 
 .task-title {
@@ -48,10 +45,11 @@
     text-align: center;
     font-family: inherit;
     font-size: 1.2rem;
+    font-weight: bold;
     text-transform: capitalize;
 
     cursor: text;
-    margin: 0;
+    margin: 0 0 0.5rem 0;
 }
 .task-title::placeholder {
     color: rgba(255, 255, 255, 0.6);
