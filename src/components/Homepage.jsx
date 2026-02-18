@@ -39,8 +39,8 @@ function Homepage() {
 
         const newTask = {
             id: taskId,
-            name: "task",
-            content: "lorem ipsum duralam haha",
+            name: "",
+            content: "",
             x: x,
             y: y,
             w: task_w,
@@ -75,6 +75,15 @@ function Homepage() {
         }))
     }
 
+    const updateTaskContent = (id, field, value) => {
+        setTasks((oldTasks) => oldTasks.map((task) => {
+            if (task.id === id) {
+                return {...task, [field]: value}
+            }
+            return task
+        }))
+    }
+
     return (
         <div className={"homepage-container"}>
 
@@ -104,6 +113,7 @@ function Homepage() {
                     updateLocation={updateLocation}
                     boardRef={boardReference}
                     resize={resize}
+                    updateTaskContent={updateTaskContent}
                 />
             </div>
         </div>

@@ -4,7 +4,7 @@
     align-items: center;
     align-content: center;
 
-    background: linear-gradient( 135deg, #ca79a8 calc(100% - var(--corner-size) * 0.75), transparent 0 );
+    background: linear-gradient( 135deg, #ca79a8 calc(100% - var(--corner-size) * 0.7), transparent 0 );
 
     filter: drop-shadow( 0 0.2rem 10px rgba(0, 0, 0, 0.2) );
 
@@ -36,15 +36,49 @@
 
 }
 
-.task h2 {
+.task-title {
+    max-width: 100%;
+    min-width: 0;
+    field-sizing: content;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    text-align: center;
+    font-family: inherit;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+
     cursor: text;
     margin: 0;
 }
+.task-title::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
 
-.task p {
+.task-details {
+    field-sizing: content;
+    width: 0;
+    min-width: 100%;
+
+    min-height: fit-content;
+    flex: 1;
+
+    background: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+
     cursor: text;
-    padding: 0 0 1rem 0;
     text-align: center;
+    font-family: inherit;
+    font-size: 1rem;
+    text-wrap: wrap;
+
+}
+.task-details::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .resize-handle {

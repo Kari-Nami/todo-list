@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { motion } from "motion/react";
 import '../css/todo-card.css'
 
-export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize }) => {
+export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize, updateTaskContent }) => {
 
     const animations = {
         hidden: {scale: 1.05},
@@ -40,8 +40,24 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
         }}
         >
             <div className='task-content'>
-                <h2>{task.name}</h2>
-                <p>{task.content}</p>
+                <input
+                    className='task-title'
+                    value={task.name || ''}
+                    placeholder={'task name'}
+                    onChange={(e) => updateTaskContent(task.id, 'name', e.target.value)}
+
+                    onPointerDown={(e) => e.stopPropagation()}
+                />
+
+                <textarea
+                    className='task-details'
+                    value={task.content || ''}
+                    placeholder={'add details...'}
+                    onChange={(e) => updateTaskContent(task.id, 'content', e.target.value)}
+
+                    onPointerDown={(e) => e.stopPropagation()}
+                />
+
                 <button
                     onPointerDown={(e) => e.stopPropagation()}
                     onClick={() => deleteTask(task.id)}
