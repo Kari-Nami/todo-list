@@ -84,6 +84,15 @@ function Homepage() {
         }))
     }
 
+    const bringToFront = (id) => {
+        setTasks((oldTasks) => {
+            const taskToMove = oldTasks.find((task) => task.id === id)
+            const otherTasks = oldTasks.filter((task) => task.id !== id)
+
+            return [...otherTasks, taskToMove]
+        })
+    }
+
     return (
         <div className={"homepage-container"}>
 
@@ -114,6 +123,7 @@ function Homepage() {
                     boardRef={boardReference}
                     resize={resize}
                     updateTaskContent={updateTaskContent}
+                    bringToFront={bringToFront}
                 />
             </div>
         </div>

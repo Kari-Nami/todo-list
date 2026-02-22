@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { motion } from "motion/react";
 import '../css/todo-card.css'
 
-export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize, updateTaskContent }) => {
+export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize, updateTaskContent, bringToFront }) => {
 
     const animations = {
         hidden: {scale: 1.05},
@@ -20,7 +20,7 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
             initial="hidden"
             animate="visible"
 
-            whileHover={{ scale: 1.05, cursor: "grab" }}
+            whileHover={{ cursor: "grab" }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
 
             drag
@@ -30,7 +30,11 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
             onDragEnd={(event, info) => {
                 updateLocation(task.id, info.offset)
             }}
-            whileTap={{cursor: "grabbing"}}
+            whileTap={{cursor: "grabbing", scale: 1.05, }}
+            onPointerDown={(e) => {
+                e.stopPropagation()
+                bringToFront(task.id)
+            }}
 
             style={{
                 x: task.x,

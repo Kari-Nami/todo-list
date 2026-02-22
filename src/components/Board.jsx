@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react'
 import '../css/board.css'
 import {TodoCard} from "./TodoCard.jsx";
 
-export const Board = ({ tasks, deleteFunction, updateLocation, boardRef, resize, updateTaskContent }) => {
+export const Board = ({ tasks, deleteFunction, updateLocation, boardRef, resize, updateTaskContent, bringToFront }) => {
 
     return (
         <div className={"board"} ref={boardRef}>
@@ -15,6 +15,7 @@ export const Board = ({ tasks, deleteFunction, updateLocation, boardRef, resize,
                     updateLocation={updateLocation}
                     resize={resize}
                     updateTaskContent={updateTaskContent}
+                    bringToFront={bringToFront}
                 />
             ))}
         </div>
