@@ -37,6 +37,11 @@ function Homepage() {
 
         }
 
+        const currentHighestZ = Math.max(
+            0,
+            ...tasks.map(task => task.z || 0)
+        )
+
         const newTask = {
             id: taskId,
             name: "",
@@ -44,7 +49,8 @@ function Homepage() {
             x: x,
             y: y,
             w: task_w,
-            h: task_h
+            h: task_h,
+            z: currentHighestZ + 1
         }
 
         setTasks([...tasks, newTask])
@@ -86,10 +92,17 @@ function Homepage() {
 
     const bringToFront = (id) => {
         setTasks((oldTasks) => {
-            const taskToMove = oldTasks.find((task) => task.id === id)
-            const otherTasks = oldTasks.filter((task) => task.id !== id)
+            const highestZ = Math.max(
+                0,
+                ...oldTasks.map((task) => task.z || 0)
+            )
 
-            return [...otherTasks, taskToMove]
+            return oldTasks.map((task) => {
+                if (task.id === id) {
+                    return {...task, z: highestZ + 1}
+                }
+                return task
+            })
         })
     }
 

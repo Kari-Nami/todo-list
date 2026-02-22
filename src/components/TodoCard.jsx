@@ -40,7 +40,8 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
                 x: task.x,
                 y: task.y,
                 width: width,
-                height: height
+                height: height,
+                zIndex: task.z
         }}
         >
             <div className='task-content'>
