@@ -71,7 +71,7 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
                 </button>
             </div>
             <motion.div
-                className='resize-handle'
+                className='resize-corner'
                 drag
                 dragMomentum={false}
                 dragElastic={0}
