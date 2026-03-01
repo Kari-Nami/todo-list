@@ -5,6 +5,6 @@ import Homepage from './components/homepage.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Homepage />
+    <Homepage/>
   </StrictMode>,
 )

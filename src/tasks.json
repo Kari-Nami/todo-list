@@ -1,4 +1,8 @@
 [
-  { "id": 1, "name": "task1", "content": "...", "x": 10, "y": 10, "w": 200, "h": 200, "z": 0 },
-  { "id": 2, "name": "task2", "content": "...", "x": 50, "y": 70, "w": 200, "h": 200, "z": 1 }
+  { "id": 1, "name": "task1", "content": "...",
+    "colour": "linear-gradient( 135deg, #ca79a8 calc(100% - var(--corner-size) * 0.7), transparent 0 )",
+    "x": 10, "y": 10, "w": 200, "h": 200, "z": 0 },
+  { "id": 2, "name": "task2", "content": "...",
+    "colour": "linear-gradient( 135deg, #ca79b8 calc(100% - var(--corner-size) * 0.7), transparent 0 )",
+    "x": 50, "y": 70, "w": 200, "h": 200, "z": 1 }
 ]
