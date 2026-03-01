@@ -23,7 +23,13 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
         return luminosity < 0.75
 
     }, [task.colour])
+
     const fontColour = isBackgroundDark ? '#fff' : '#000'
+
+    const backgroundHex = task.colour.match(/#[0-9a-fA-F]{6}/)[0]
+    const r = parseInt(backgroundHex.slice(1, 3), 16)
+    const g = parseInt(backgroundHex.slice(3, 5), 16)
+    const b = parseInt(backgroundHex.slice(5, 7), 16)
 
     const taskReference = useRef(null)
 
@@ -60,7 +66,10 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
                 y: task.y,
                 width: width,
                 height: height,
-                zIndex: task.z
+                zIndex: task.z,
+
+                '--bg-r': r, '--bg-g': g, '--bg-b': b,
+                '--font-colour': fontColour,
         }}
         >
             <div className='task-content'>
@@ -69,7 +78,6 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
                     value={task.name || ''}
                     placeholder={'task name'}
                     onChange={(e) => updateTaskContent(task.id, 'name', e.target.value)}
-                    style={{ '--font-colour': fontColour }}
                 />
 
                 <textarea
@@ -77,7 +85,6 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
                     value={task.content || ''}
                     placeholder={'add details...'}
                     onChange={(e) => updateTaskContent(task.id, 'content', e.target.value)}
-                    style={{ '--font-colour': fontColour }}
 
                 />
 

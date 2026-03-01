@@ -10,13 +10,14 @@
     min-width: fit-content;
     min-height: fit-content;
 
-    position: absolute;
+    position: fixed;
 }
 .task:hover {
     filter: drop-shadow( 0 0.2rem 10px rgba(0, 0, 0, 0.4) );
 }
 .task:focus {
-    filter: drop-shadow( 0 0.2rem 10px rgba(255, 255, 255, 0.3));
+    filter: drop-shadow(0 0.2rem 10px rgb(var(--bg-r), var(--bg-g), var(--bg-b), 0.8));
+    outline: none;
 }
 
 .task-content {

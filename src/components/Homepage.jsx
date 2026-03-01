@@ -134,6 +134,7 @@ function Homepage() {
                 transition={{ duration: 0.5, ease: "easeOut" }}
             >
                 <h1> To-do List </h1>
+                <p> Open tasks: {tasks.length} </p>
                 <motion.button
                     className={"create-button"}
                     onClick={addTask}
