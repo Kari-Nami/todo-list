@@ -1,16 +1,79 @@
-# React + Vite
+# To-do List
+This is a to-do list with draggable and customizable tasks.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I created this project to learn more about and practice React. It has been a long and hard journey for me, since I was a beginner at React, Javascript, CSS and HTML at the beginning. I barely knew the basics of JS, so decided to test my own abilities and "learn as I go".
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Functionality
+- Create new tasks & delete old ones
+- Edit task title & details
+- Customize tasks: resize, drag around & change colour
+- Smooth animations
+- Hovering over a task brings it to the front for quick view, then it goes back to its previous position
+- Clicking on a task brings it to the front
+- Tasks save when page is reloaded or reopened
 
-## React Compiler
+# Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+I separated my project into 2 repositories to separate my **backend** and **frontend**:
 
-## Expanding the ESLint configuration
+## Frontend
+React Single Page Application (SPA) that handles UI, dragging interactions, and colour theming
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Technology | Purpose |
+|---|---|
+| [React 19](https://react.dev/) | UI component library |
+| [Vite 7](https://vite.dev/) | Build tool and dev server |
+| [Motion](https://motion.dev/) | Drag-and-drop and animations |
+| [ESLint](https://eslint.org/) | Code linting |
+
+## Backend
+REST API that handles task CRUD operations, colour & location persistence, and database access
+
+| Technology | Purpose |
+|---|---|
+| [Node.js](https://nodejs.org/) | JavaScript runtime |
+| [Express](https://expressjs.com/) | HTTP server and REST API framework |
+| [PostgreSQL](https://www.postgresql.org/) | Relational database |
+
+## Data Flow
+
+```
+┌─────────────────┐                        ┌─────────────────┐                  ┌─────────────────┐
+│                 │       HTTP/REST        │                 │        SQL       │                 │
+│  React + Vite   │  ──────────────────►   │   Express API   │  ──────────────► │    PostgreSQL   │
+│   (Frontend)    │  ◄──────────────────   │    (Backend)    │  ◄────────────── │    (Database)   │
+│                 │         JSON           │                 │      Results     │                 │
+└─────────────────┘                        └─────────────────┘                  └─────────────────┘
+```
+
+# Project Structure
+(temporary, will change drastically)
+
+```
+root
+│
+├── src/
+│   ├── assets/
+│   │   └── board_bg.png
+│   ├── components/
+│   │   ├── Board.jsx
+│   │   ├── Homepage.jsx
+│   │   └── TodoCard.jsx
+│   ├── css/
+│   │   ├── board.css
+│   │   ├── homepage.css
+│   │   ├── index.css
+│   │   └── todo-card.css
+│   ├── tasks.json
+│   └── main.jsx
+├── package.json
+└── README.md
+```
+
+# Problems I Encountered & Fixes
+
+- Tasks jumping around
+- Task persistence between page reloads
+- Task z-index updating
+- External colour picker for tasks
