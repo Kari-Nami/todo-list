@@ -1,8 +1,11 @@
 # To-do List
-This is a to-do list with draggable and customizable tasks.
+This is a to-do list with draggable "post-it"-like tasks with deep customization: colour, size, \*_font colour & size, locking_
+
+*_not yet implemented but in the works_
 
 I created this project to learn more about and practice React. It has been a long and hard journey for me, since I was a beginner at React, Javascript, CSS and HTML at the beginning. I barely knew the basics of JS, so decided to test my own abilities and "learn as I go".
 
+[MIT LICENSE](./LICENSE)
 
 # Functionality
 - Create new tasks & delete old ones
