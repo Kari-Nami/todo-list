@@ -23,12 +23,15 @@
 }
 
 .task-customization {
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.colour-picker {
+.colour-palette {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
+  margin-bottom: 0.5rem;
 }
 
 .colour-choice {
@@ -40,6 +43,13 @@
 }
 .colour-choice:hover {
   border: #000 solid 1px;
+}
+
+.colour-picker {
+  outline: none;
+  border: none;
+  width: 100%;
+
 }
 
 .board-container {
