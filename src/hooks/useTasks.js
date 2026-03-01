@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import * as taskService from '../services/taskService.js'
 
 export function useTasks() {
-    const [tasks, setTasks] = useState(null)
+    const [tasks, setTasks] = useState(() => taskService.loadTasks())
     const [focusTaskId, setFocusTaskId] = useState(null)
 
     const focusTask = focusTaskId? (tasks.find((task) => task.id === focusTaskId)) : null
@@ -36,7 +36,7 @@ export function useTasks() {
     }
 
     const changeTaskColour = (id, newColour) => {
-        setTasks(taskService.resizeTask(tasks, id, newColour))
+        setTasks(taskService.changeColour(tasks, id, newColour))
     }
 
     const bringTaskToFront = (id) => {
