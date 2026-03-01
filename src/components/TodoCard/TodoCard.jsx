@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo, useRef, useState} from 'react'
 import { motion } from "motion/react";
-import '../css/todo-card.css'
+import './todo-card.css'
 
 export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize, updateTaskContent, bringToFront }) => {
 

@@ -5,7 +5,7 @@ export function useTasks() {
     const [tasks, setTasks] = useState(null)
     const [focusTaskId, setFocusTaskId] = useState(null)
 
-    const focusTask = tasks.find((task) => task.id === focusTaskId)
+    const focusTask = focusTaskId? (tasks.find((task) => task.id === focusTaskId)) : null
 
     useEffect(() => {
         taskService.saveTasks(tasks)
