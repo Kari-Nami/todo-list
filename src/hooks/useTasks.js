@@ -8,7 +8,7 @@ export function useTasks() {
     const focusTask = focusTaskId? (tasks.find((task) => task.id === focusTaskId)) : null
 
     useEffect(() => {
-        taskService.saveTasks(tasks)
+        if (tasks) taskService.saveTasks(tasks)
     }, [tasks]);
 
     const addTask = (location) => {
