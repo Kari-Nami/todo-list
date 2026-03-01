@@ -16,8 +16,7 @@
     transition: filter 0.3s;
 }
 .task:focus {
-    filter:
-            drop-shadow( 0 0.2rem 10px rgba(255, 255, 255, 0.2));
+    filter: drop-shadow( 0 0.2rem 10px rgba(255, 255, 255, 0.2));
 }
 
 .task-content {
@@ -49,10 +48,13 @@
     font-weight: bold;
     text-transform: capitalize;
 
+    color: var(--font-colour);
+
     cursor: text;
     margin: 0 0 0.5rem 0;
 }
 .task-title::placeholder {
+    color: var(--font-colour);
     opacity: 0.6;
 }
 
@@ -69,15 +71,17 @@
     outline: none;
     resize: none;
 
+    color: var(--font-colour);
+
     cursor: text;
     text-align: center;
     font-family: inherit;
     font-size: 1rem;
     text-wrap: wrap;
-
 }
 .task-details::placeholder {
-    opacity: 0.8;
+    color: var(--font-colour);
+    opacity: 0.6;
 }
 
 .resize-corner {

@@ -20,7 +20,7 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
             parseInt(colour.slice(5, 7), 16)*0.114)
             / 256
 
-        return luminosity < 0.8
+        return luminosity < 0.75
 
     }, [task.colour])
     const fontColour = isBackgroundDark ? '#fff' : '#000'
@@ -66,7 +66,7 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
                     className='task-title'
                     value={task.name || ''}
                     placeholder={'task name'}
-                    style={{ color: fontColour }}
+                    style={{ '--font-colour': fontColour }}
 
                     onChange={(e) => updateTaskContent(task.id, 'name', e.target.value)}
 
@@ -79,7 +79,7 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
                     value={task.content || ''}
                     placeholder={'add details...'}
                     onChange={(e) => updateTaskContent(task.id, 'content', e.target.value)}
-                    style={{ color: fontColour }}
+                    style={{ '--font-colour': fontColour }}
 
                     onPointerDown={(e) => e.stopPropagation()}
 

@@ -149,6 +149,7 @@ function Homepage() {
                         type={'color'}
                         value={focusTask.colour.split(" ")[2]}
                         onChange={(e) => changeTaskColour(focusTaskId, e.target.value)}
+                        onPointerDown={(e) => e.stopPropagation()}
                     />
                 )}
             </motion.div>
