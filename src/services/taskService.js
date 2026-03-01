@@ -1,9 +1,5 @@
-import defaultTask from '../tasks.json'
-
 export function loadTasks() {
-    const saved = localStorage.getItem('tasks')
-    if (saved && saved !== "null") return JSON.parse(saved)
-    return defaultTask
+    return JSON.parse(localStorage.getItem('tasks'))
 }
 
 export function saveTasks(tasks) {
