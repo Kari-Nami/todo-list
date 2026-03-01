@@ -14,6 +14,9 @@ function Homepage() {
         // return tasks_json
     })
 
+    const [focusTaskId, setFocusTaskId] = useState(null)
+    const focusTask = tasks.find((task) => task.id === focusTaskId)
+
     useEffect(() => {
         localStorage.setItem('tasks', JSON.stringify(tasks))
     }, [tasks]);
@@ -28,6 +31,7 @@ function Homepage() {
 
         let x = 0
         let y = 0
+        const defaultColour = "#ffff00"
 
         if (boardReference.current) {
             const boardDimensions = boardReference.current.getBoundingClientRect()
@@ -46,7 +50,7 @@ function Homepage() {
             id: taskId,
             name: "",
             content: "",
-            colour: "linear-gradient( 135deg, #ffff00 calc(100% - var(--corner-size) * 0.7), transparent 0 )",
+            colour: `linear-gradient( 135deg, ${defaultColour} calc(100% - var(--corner-size) * 0.7), transparent 0 )`,
             x: x,
             y: y,
             w: task_w,
@@ -55,10 +59,12 @@ function Homepage() {
         }
 
         setTasks([...tasks, newTask])
+        setFocusTaskId(taskId)
     }
 
     const deleteTask = (taskId) => {
         setTasks( tasks.filter((task) => task.id !== taskId) )
+        if (focusTaskId === taskId) setFocusTaskId(null)
     }
 
     const updateLocation = (id, offset) => {
@@ -91,6 +97,15 @@ function Homepage() {
         }))
     }
 
+    const changeTaskColour = (id, newColour) => {
+        setTasks((oldTasks) => oldTasks.map((task) => {
+            if (task.id === id) {
+                return {...task, colour: `linear-gradient( 135deg, ${newColour} calc(100% - var(--corner-size) * 0.7), transparent 0 )`}
+            }
+            return task
+        }))
+    }
+
     const bringToFront = (id) => {
         setTasks((oldTasks) => {
             const highestZ = Math.max(
@@ -105,6 +120,7 @@ function Homepage() {
                 return task
             })
         })
+        setFocusTaskId(id)
     }
 
     return (
@@ -127,6 +143,14 @@ function Homepage() {
                 >
                     Add new task
                 </motion.button>
+
+                {focusTaskId && (
+                    <input
+                        type={'color'}
+                        value={focusTask.colour.split(" ")[2]}
+                        onChange={(e) => changeTaskColour(focusTaskId, e.target.value)}
+                    />
+                )}
             </motion.div>
 
             <div className={"board-container"}>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import { motion } from "motion/react";
 import '../css/todo-card.css'
 
@@ -23,8 +23,11 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
         return luminosity < 0.8
     }
 
+    const taskReference = useRef(null)
+
     return (
         <motion.div
+            ref={taskReference}
             className={'task'}
             key={task.id}
             variants={animations}
