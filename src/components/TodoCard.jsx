@@ -36,8 +36,10 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
             initial="hidden"
             animate="visible"
 
-            whileHover={{ cursor: "grab" }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            whileHover={{ cursor: "grab",zIndex: 100000, scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20,
+                zIndex: {delay: 0.5}, scale: {duration: 0.3}
+            }}
 
             drag
             dragMomentum={false}
@@ -46,7 +48,7 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
             onDragEnd={(event, info) => {
                 updateLocation(task.id, info.offset)
             }}
-            whileTap={{cursor: "grabbing", scale: 1.05, }}
+            whileTap={{cursor: "grabbing",  }}
             onPointerDown={(e) => {
                 e.stopPropagation()
                 bringToFront(task.id)
@@ -66,12 +68,8 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
                     className='task-title'
                     value={task.name || ''}
                     placeholder={'task name'}
-                    style={{ '--font-colour': fontColour }}
-
                     onChange={(e) => updateTaskContent(task.id, 'name', e.target.value)}
-
-                    onPointerDown={(e) => e.stopPropagation()}
-
+                    style={{ '--font-colour': fontColour }}
                 />
 
                 <textarea
@@ -80,8 +78,6 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
                     placeholder={'add details...'}
                     onChange={(e) => updateTaskContent(task.id, 'content', e.target.value)}
                     style={{ '--font-colour': fontColour }}
-
-                    onPointerDown={(e) => e.stopPropagation()}
 
                 />
 

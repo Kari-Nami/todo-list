@@ -1,6 +1,7 @@
 .task {
     --corner-size: 25px;
     filter: drop-shadow( 0 0.2rem 10px rgba(0, 0, 0, 0.2) );
+    transition: filter 0.3s;
 
     display: flex;
     align-items: center;
@@ -13,10 +14,9 @@
 }
 .task:hover {
     filter: drop-shadow( 0 0.2rem 10px rgba(0, 0, 0, 0.4) );
-    transition: filter 0.3s;
 }
 .task:focus {
-    filter: drop-shadow( 0 0.2rem 10px rgba(255, 255, 255, 0.2));
+    filter: drop-shadow( 0 0.2rem 10px rgba(255, 255, 255, 0.3));
 }
 
 .task-content {
