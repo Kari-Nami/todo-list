@@ -124,7 +124,7 @@ function Homepage() {
     }
 
     return (
-        <div className={"homepage-container"}>
+        <div className={"homepage-container"} onPointerDown={() => setFocusTaskId(null)}>
 
             {/* menu at the top */}
             <motion.div
