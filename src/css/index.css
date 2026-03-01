@@ -15,7 +15,7 @@ body {
 :root {
   --window-margin: 4rem;
   --border-radius: 10px;
-  --menu-height: 5rem;
+  --menu-height: 10rem;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

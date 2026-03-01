@@ -22,6 +22,26 @@
   align-items: center;
 }
 
+.task-customization {
+
+}
+
+.colour-picker {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.colour-choice {
+  width: 1rem;
+  height: 1rem;
+  border: none;
+
+  cursor: pointer;
+}
+.colour-choice:hover {
+  border: #000 solid 1px;
+}
+
 .board-container {
   flex: 1;
   padding: 20px;
@@ -32,7 +52,6 @@
 
 h1 {
   font-size: 3rem;
-  margin: 1rem;
 }
 
 .create-button {

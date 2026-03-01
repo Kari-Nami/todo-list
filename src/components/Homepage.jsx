@@ -106,6 +106,17 @@ function Homepage() {
         }))
     }
 
+    const colours = [
+        "#ff3333", "#ff8f33", "#ffdd33", "#33ff3d",
+        "#33fff5", "#3385ff", "#8f33ff", "#ff33e1",
+        "#ffa8a8", "#ffcfa8", "#fff5a8", "#a8ffb0",
+        "#a8fff9", "#a8c1ff", "#d9a8ff", "#ffabe1",
+        "#7d0d0d", "#7d470d", "#7d6f0d", "#3d7d0d",
+        "#0d7d7d", "#0d477d", "#470d7d", "#7d0d47",
+        "#ffffff", "#a8a8a8", "#7e7e7e", "#545454",
+        "#2a2a2a", "#000000", "#5c3c29", "#3e2819"
+    ]
+
     const bringToFront = (id) => {
         setTasks((oldTasks) => {
             const highestZ = Math.max(
@@ -133,25 +144,45 @@ function Homepage() {
                 animate={{ opacity: 1,  y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
             >
-                <h1> To-do List </h1>
-                <p> Open tasks: {tasks.length} </p>
-                <motion.button
-                    className={"create-button"}
-                    onClick={addTask}
-                    whileHover={{scale: 1.05}}
-                    whileTap={{scale: 1}}
-                    transition={{type: "spring", stiffness: 300, damping: 20}}
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        margin: "0 1rem",
+                        alignItems: "center"
+                    }}
                 >
-                    Add new task
-                </motion.button>
+                    <h1> To-do List </h1>
+                    <p style={{marginBottom: "0.5rem"}}> Open tasks: {tasks.length} </p>
+                    <motion.button
+                        className={"create-button"}
+                        onClick={addTask}
+                        whileHover={{scale: 1.05}}
+                        whileTap={{scale: 1}}
+                        transition={{type: "spring", stiffness: 300, damping: 20}}
+                    >
+                        Add new task
+                    </motion.button>
+                </div>
 
                 {focusTaskId && (
-                    <input
-                        type={'color'}
-                        value={focusTask.colour.split(" ")[2]}
-                        onChange={(e) => changeTaskColour(focusTaskId, e.target.value)}
-                        onPointerDown={(e) => e.stopPropagation()}
-                    />
+                    <div className={'task-customization'} onPointerDown={(e) => e.stopPropagation()}>
+                        <div className={'colour-picker'}>
+                            {colours.map((colour) =>
+                                <button
+                                    className={'colour-choice'}
+                                    onClick={() => changeTaskColour(focusTaskId, colour)}
+                                    style={{background: colour}}
+                                />
+                            )}
+                        </div>
+                        <input
+                            type={'color'}
+                            value={focusTask.colour.split(" ")[2]}
+                            onChange={(e) => changeTaskColour(focusTaskId, e.target.value)}
+                            onPointerDown={(e) => e.stopPropagation()}
+                        />
+                    </div>
                 )}
             </motion.div>
 
