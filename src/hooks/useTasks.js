@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import * as taskService from '../services/taskService.js'
 
 export function useTasks() {
-    const [tasks, setTasks] = useState(() => taskService.loadTasks())
+    const [tasks, setTasks] = useState([])
     const [focusTaskId, setFocusTaskId] = useState(null)
 
     const focusTask = focusTaskId? (tasks.find((task) => task.id === focusTaskId)) : null
