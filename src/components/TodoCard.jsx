@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { motion } from "motion/react";
 import '../css/todo-card.css'
 
@@ -11,6 +11,17 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
 
     const width = task.w
     const height = task.h
+
+    function isBackgroundDark() {
+        const colour = task.colour.split(" ")[2]
+        console.log("hex", colour)
+        const rgb = ['0x' + colour[1] + colour[2] | 0, '0x' + colour[3] + colour[4] | 0, '0x' + colour[5] + colour[6] | 0]
+        console.log("rgb", rgb)
+        const luminosity = (rgb[0]*0.299 + rgb[1]*0.587 + rgb[2]*0.114) / 256
+        console.log("lum", luminosity, luminosity <= 0.5)
+
+        return luminosity < 0.8
+    }
 
     return (
         <motion.div
@@ -50,9 +61,12 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
                     className='task-title'
                     value={task.name || ''}
                     placeholder={'task name'}
+
                     onChange={(e) => updateTaskContent(task.id, 'name', e.target.value)}
 
                     onPointerDown={(e) => e.stopPropagation()}
+
+                    style={{ color: isBackgroundDark() ? ('#fff') : ('#000') }}
                 />
 
                 <textarea
@@ -62,6 +76,8 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
                     onChange={(e) => updateTaskContent(task.id, 'content', e.target.value)}
 
                     onPointerDown={(e) => e.stopPropagation()}
+
+                    style={{ color: isBackgroundDark() ? ('#fff') : ('#000') }}
                 />
 
                 <button
