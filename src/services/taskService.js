@@ -1,5 +1,5 @@
 export function loadTasks() {
-    return localStorage.getItem('tasks')
+    return JSON.parse(localStorage.getItem('tasks'))
 }
 
 export function saveTasks(tasks) {
@@ -53,7 +53,7 @@ export function moveTask(tasks, id, offset) {
 }
 
 export function resizeTask(tasks, id, newDimensions) {
-    return changeOneTask(tasks, id, {x: newDimensions.x, y: newDimensions.y})
+    return changeOneTask(tasks, id, {w: newDimensions.w, h: newDimensions.h})
 }
 
 export function updateContent(tasks, id, field, newValue) {
@@ -66,7 +66,7 @@ export function changeColour(tasks, id, newColour) {
 
 export function bringTaskToFront(tasks, id) {
     const currentHighestZ = Math.max( 0, ...tasks.map(task => task.z || 0) )
-    return changeOneTask(tasks, id, {z: currentHighestZ})
+    return changeOneTask(tasks, id, {z: currentHighestZ + 1})
 }
 
 // ----- helpers -----
