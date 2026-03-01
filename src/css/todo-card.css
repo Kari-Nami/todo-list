@@ -1,8 +1,5 @@
 .task {
     --corner-size: 25px;
-
-    background: linear-gradient( 135deg, #ca79a8 calc(100% - var(--corner-size) * 0.7), transparent 0 );
-
     filter: drop-shadow( 0 0.2rem 10px rgba(0, 0, 0, 0.2) );
 
     display: flex;
@@ -83,7 +80,6 @@
     width: 0;
     height: 0;
 
-    border-left: var(--corner-size) solid #a16085;
     border-bottom: var(--corner-size) solid transparent;
 
     position: absolute;

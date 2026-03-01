@@ -37,6 +37,7 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
             }}
 
             style={{
+                background: task.colour,
                 x: task.x,
                 y: task.y,
                 width: width,
@@ -85,6 +86,8 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
 
                     resize(task.id, {w: new_w, h: new_h})
                 }}
+
+                style={{ borderLeft: `var(--corner-size) solid rgba(0, 0, 0, 0.2)` }}
             />
         </motion.div>
     )

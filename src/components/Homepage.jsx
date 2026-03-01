@@ -46,6 +46,7 @@ function Homepage() {
             id: taskId,
             name: "",
             content: "",
+            colour: "linear-gradient( 135deg, #ca79a8 calc(100% - var(--corner-size) * 0.7), transparent 0 )",
             x: x,
             y: y,
             w: task_w,
