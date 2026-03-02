@@ -23,7 +23,7 @@ export function createTask(tasks, {x, y}, defaultColour) {
         id: id,
         name: "",
         content: "",
-        colour: bgGradient(defaultColour),
+        colour: defaultColour,
         x,
         y,
         w: task_w,
@@ -62,7 +62,7 @@ export function updateContent(tasks, id, field, newValue) {
 }
 
 export function changeColour(tasks, id, newColour) {
-    return changeOneTask(tasks, id, {colour: bgGradient(newColour)})
+    return changeOneTask(tasks, id, {colour: newColour})
 }
 
 export function bringTaskToFront(tasks, id) {
@@ -77,8 +77,4 @@ function changeOneTask(tasks, id, changes) {
         if (task.id === id) { return {...task, ...changes} }
         return task
     })
-}
-
-function bgGradient(colour) {
-    return `linear-gradient( 135deg, ${colour} calc(100% - var(--corner-size) * 0.7), transparent 0 )`
 }

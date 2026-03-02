@@ -63,7 +63,7 @@ export const TodoCard = ( props ) => {
             }}
 
             style={{
-                background: task.colour,
+                background: `linear-gradient( 135deg, ${task.colour} calc(100% - var(--corner-size) * 0.7), transparent 0 )`,
                 x: task.x,
                 y: task.y,
                 width: width,
