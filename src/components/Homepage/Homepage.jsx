@@ -3,19 +3,9 @@ import {motion} from "motion/react"
 import React, {useRef} from "react";
 import {Board} from "../Board/Board.jsx";
 import {useTasks} from "../../hooks/useTasks.js";
+import {useColours} from "../../hooks/useColours.js";
 
 function Homepage() {
-
-    const colours = [
-        "#ffa8a8", "#ffcfa8", "#fff5a8", "#a8ffb0",
-        "#a8fff9", "#a8c1ff", "#d9a8ff", "#ffabe1",
-        "#ff3333", "#ff8f33", "#ffdd33", "#33ff3d",
-        "#33fff5", "#3385ff", "#8f33ff", "#ff33e1",
-        "#7d0d0d", "#7d470d", "#7d6f0d", "#3d7d0d",
-        "#0d7d7d", "#0d477d", "#470d7d", "#7d0d47",
-        "#ffffff", "#a8a8a8", "#7e7e7e", "#545454",
-        "#2a2a2a", "#000000", "#5c3c29", "#3e2819"
-    ]
 
     const boardReference = useRef(null)
 
@@ -31,6 +21,8 @@ function Homepage() {
         changeTaskColour,
         bringTaskToFront
     } = useTasks()
+
+    const {colours, addColour, deleteColour} = useColours()
 
     const handleAddTask = () => {
         const task_w = 150

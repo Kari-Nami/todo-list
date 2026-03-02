@@ -11,7 +11,7 @@ export function createTask(tasks, {x, y}) {
     const id = Date.now()
     const task_w = 150
     const task_h = 150
-    const defaultColour = "#ffff00"
+    const defaultColour = "#ffdd33"
 
     const currentHighestZ = Math.max(
         0,
