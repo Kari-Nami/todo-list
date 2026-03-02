@@ -1,0 +1,16 @@
+.homepage-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.board-container {
+  flex: 1;
+  padding: 20px;
+
+  min-height: 0;
+  width: 100%;
+}
