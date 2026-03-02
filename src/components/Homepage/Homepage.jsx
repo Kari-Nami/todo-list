@@ -27,6 +27,7 @@ function Homepage() {
     const handleAddTask = () => {
         const task_w = 150
         const task_h = 150
+        const defaultColour = colours[10]
         let x = 0
         let y = 0
 
@@ -36,7 +37,7 @@ function Homepage() {
             y = (rect.height / 2) - (task_h / 2)
         }
 
-        addTask({ x, y })
+        addTask({ x, y }, defaultColour)
     }
 
     return (
@@ -70,11 +71,13 @@ function Homepage() {
                     </motion.button>
                 </div>
 
+                {/* colour picker */}
                 {focusTaskId && (
                     <div className={'task-customization'} onPointerDown={(e) => e.stopPropagation()}>
                         <div className={'colour-palette'}>
-                            {colours.map((colour) =>
+                            {colours.map((colour, index) =>
                                 <button
+                                    key={index}
                                     className={'colour-choice'}
                                     onClick={() => changeTaskColour(focusTaskId, colour)}
                                     style={{background: colour}}

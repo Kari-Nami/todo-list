@@ -6,7 +6,7 @@ export const Board = ( props ) => {
 
     return (
         <div className={"board"} ref={props.boardRef}>
-            {props.tasks && props.tasks.map((task) => (
+            {props.tasks.map((task) => (
                 <TodoCard
                     key={task.id}
                     task={task}

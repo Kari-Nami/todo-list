@@ -12,8 +12,8 @@ export function useTasks() {
         if (tasks) taskService.saveTasks(tasks)
     }, [tasks]);
 
-    const addTask = (location) => {
-        const result = taskService.createTask(tasks, location)
+    const addTask = (location, defaultColour) => {
+        const result = taskService.createTask(tasks, location, defaultColour)
 
         setTasks(result.tasks)
         setFocusTaskId(result.newTaskId)

@@ -9,11 +9,10 @@ export function saveTasks(tasks) {
 }
 
 
-export function createTask(tasks, {x, y}) {
+export function createTask(tasks, {x, y}, defaultColour) {
     const id = Date.now()
     const task_w = 150
     const task_h = 150
-    const defaultColour = "#ffdd33"
 
     const currentHighestZ = Math.max(
         0,
