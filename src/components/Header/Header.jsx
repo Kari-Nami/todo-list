@@ -44,7 +44,7 @@ export const Header = ( props ) => {
                     <input
                         className={'colour-picker'}
                         type={'color'}
-                        value={props.focusTask.colour.split(" ")[2]}
+                        value={props.focusTask.colour}
                         onChange={(e) => props.changeTaskColour(props.focusTaskId, e.target.value)}
                         onPointerDown={(e) => e.stopPropagation()}
                     />
