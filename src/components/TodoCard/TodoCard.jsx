@@ -44,7 +44,7 @@ export const TodoCard = ( props ) => {
             initial="hidden"
             animate="visible"
 
-            whileHover={{ cursor: "grab",zIndex: 100000, scale: 1.02 }}
+            whileHover={{ cursor: "grab", zIndex: 100000, scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 20,
                 zIndex: {delay: 0.5}, scale: {duration: 0.3}
             }}

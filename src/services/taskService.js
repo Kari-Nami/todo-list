@@ -1,5 +1,7 @@
 export function loadTasks() {
-    return JSON.parse(localStorage.getItem('tasks'))
+    const saved = localStorage.getItem('tasks')
+    if (saved) return JSON.parse(saved)
+    return []
 }
 
 export function saveTasks(tasks) {
