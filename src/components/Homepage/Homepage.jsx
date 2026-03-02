@@ -101,6 +101,7 @@ function Homepage() {
                     resize={resizeTask}
                     updateTaskContent={updateTaskContent}
                     bringToFront={bringTaskToFront}
+                    focusTaskId={focusTaskId}
                 />
             </div>
         </div>

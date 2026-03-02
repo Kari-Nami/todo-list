@@ -2,20 +2,21 @@ import React, {useRef, useState} from 'react'
 import './board.css'
 import {TodoCard} from "../TodoCard/TodoCard.jsx";
 
-export const Board = ({ tasks, deleteFunction, updateLocation, boardRef, resize, updateTaskContent, bringToFront }) => {
+export const Board = ( props ) => {
 
     return (
-        <div className={"board"} ref={boardRef}>
-            {tasks && tasks.map((task) => (
+        <div className={"board"} ref={props.boardRef}>
+            {props.tasks && props.tasks.map((task) => (
                 <TodoCard
                     key={task.id}
                     task={task}
-                    deleteTask={deleteFunction}
-                    constraints={boardRef}
-                    updateLocation={updateLocation}
-                    resize={resize}
-                    updateTaskContent={updateTaskContent}
-                    bringToFront={bringToFront}
+                    deleteTask={props.deleteFunction}
+                    constraints={props.boardRef}
+                    updateLocation={props.updateLocation}
+                    resize={props.resize}
+                    updateTaskContent={props.updateTaskContent}
+                    bringToFront={props.bringToFront}
+                    focusTaskId={props.focusTaskId}
                 />
             ))}
         </div>

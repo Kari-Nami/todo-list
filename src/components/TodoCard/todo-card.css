@@ -20,6 +20,11 @@
     outline: none;
 }
 
+.focus-task {
+    filter: drop-shadow(0 0.2rem 10px rgb(var(--bg-r), var(--bg-g), var(--bg-b), 0.8));
+    outline: none;
+}
+
 .task-content {
     display: flex;
     flex-direction: column;

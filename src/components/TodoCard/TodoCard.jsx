@@ -2,7 +2,9 @@ import React, {useEffect, useMemo, useRef, useState} from 'react'
 import { motion } from "motion/react";
 import './todo-card.css'
 
-export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize, updateTaskContent, bringToFront }) => {
+export const TodoCard = ( props ) => {
+
+    const task = props.task
 
     const animations = {
         hidden: {scale: 1.05},
@@ -36,7 +38,7 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
     return (
         <motion.div
             ref={taskReference}
-            className={'task'}
+            className={`task ${props.focusTaskId === task.id ? 'focus-task' : ''}`}
             key={task.id}
             variants={animations}
             initial="hidden"
@@ -49,15 +51,15 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
 
             drag
             dragMomentum={false}
-            dragConstraints={constraints}
+            dragConstraints={props.constraints}
             dragElastic={0}
             onDragEnd={(event, info) => {
-                updateLocation(task.id, info.offset)
+                props.updateLocation(task.id, info.offset)
             }}
             whileTap={{cursor: "grabbing",  }}
             onPointerDown={(e) => {
                 e.stopPropagation()
-                bringToFront(task.id)
+                props.bringToFront(task.id)
             }}
 
             style={{
@@ -77,20 +79,20 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
                     className='task-title'
                     value={task.name || ''}
                     placeholder={'task name'}
-                    onChange={(e) => updateTaskContent(task.id, 'name', e.target.value)}
+                    onChange={(e) => props.updateTaskContent(task.id, 'name', e.target.value)}
                 />
 
                 <textarea
                     className='task-details'
                     value={task.content || ''}
                     placeholder={'add details...'}
-                    onChange={(e) => updateTaskContent(task.id, 'content', e.target.value)}
+                    onChange={(e) => props.updateTaskContent(task.id, 'content', e.target.value)}
 
                 />
 
                 <button
                     onPointerDown={(e) => e.stopPropagation()}
-                    onClick={() => deleteTask(task.id)}
+                    onClick={() => props.deleteTask(task.id)}
                 >
                     Delete
                 </button>
@@ -108,7 +110,7 @@ export const TodoCard = ({ task, deleteTask, constraints, updateLocation, resize
                     const new_w = width + info.delta.x
                     const new_h = height + info.delta.y
 
-                    resize(task.id, {w: new_w, h: new_h})
+                    props.resize(task.id, {w: new_w, h: new_h})
                 }}
 
                 style={{ borderLeft: `var(--corner-size) solid rgba(0, 0, 0, 0.2)` }}
