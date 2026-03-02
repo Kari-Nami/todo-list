@@ -12,13 +12,13 @@ I created this project to learn more about and practice React. It has been a lon
 - Edit task title & details
 - Customize tasks: resize, drag around & change colour
 - Smooth animations
-- Hovering over a task brings it to the front for quick view, then it goes back to its previous position
+- Hovering over a task brings it to the front for quick view, then it goes back to its previous position when hover stops
 - Clicking on a task brings it to the front
 - Tasks save when page is reloaded or reopened
 
 # Tech Stack
 
-I separated my project into 2 repositories to separate my **backend** and **frontend**:
+I separated my project into 2 repositories to separate the **backend** and **frontend**. This is the **frontend**.
 
 ## Frontend
 React Single Page Application (SPA) that handles UI, dragging interactions, and colour theming
@@ -42,36 +42,48 @@ REST API that handles task CRUD operations, colour & location persistence, and d
 ## Data Flow
 
 ```
-┌─────────────────┐                        ┌─────────────────┐                  ┌─────────────────┐
-│                 │       HTTP/REST        │                 │        SQL       │                 │
-│  React + Vite   │  ──────────────────►   │   Express API   │  ──────────────► │    PostgreSQL   │
-│   (Frontend)    │  ◄──────────────────   │    (Backend)    │  ◄────────────── │    (Database)   │
-│                 │         JSON           │                 │      Results     │                 │
-└─────────────────┘                        └─────────────────┘                  └─────────────────┘
+┌─────────────────┐                        ┌─────────────────┐                  ┌──────────────────┐
+│                 │       HTTP/REST        │                 │        SQL       │                  │
+│  React + Vite   │  ──────────────────►   │   Express API   │  ──────────────► │    PostgreSQL    │
+│   (Frontend)    │  ◄──────────────────   │    (Backend)    │  ◄────────────── │    (Database)    │
+│                 │         JSON           │                 │      Results     │                  │
+└─────────────────┘                        └─────────────────┘                  └──────────────────┘
 ```
 
 # Project Structure
 (temporary, will change drastically)
 
 ```
-root
-│
+todo-list/
 ├── src/
 │   ├── assets/
 │   │   └── board_bg.png
 │   ├── components/
-│   │   ├── Board.jsx
-│   │   ├── Homepage.jsx
-│   │   └── TodoCard.jsx
-│   ├── css/
-│   │   ├── board.css
-│   │   ├── homepage.css
-│   │   ├── index.css
-│   │   └── todo-card.css
-│   ├── tasks.json
+│   │   ├── Board/
+│   │   │   ├── Board.jsx
+│   │   │   └── board.css
+|   |   ├── Header/
+│   │   │   ├── Header.jsx
+│   │   │   └── header.css
+│   │   ├── Homepage/
+│   │   │   ├── Homepage.jsx
+│   │   │   └── homepage.css
+│   │   └── TodoCard/
+│   │       ├── TodoCard.jsx
+│   │       └── todo-card.css
+│   ├── hooks/
+│   │   ├── useTasks.js
+│   │   └── useColours.js
+│   ├── services/
+│   │   ├── taskService.js
+|   |   └── colourService.js
+│   ├── index.css
 │   └── main.jsx
+├── index.html
+├── eslint.config.js
+├── vite.config.js
 ├── package.json
-└── README.md
+└── package-lock.json
 ```
 
 # Problems I Encountered & Fixes
