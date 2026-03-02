@@ -30,12 +30,18 @@ export const Header = ( props ) => {
                         {props.colours.map((colour, index) =>
                             <motion.button
                                 key={index}
-                                className={'colour-choice'}
+                                className={`colour-choice ${colour === props.focusTask.colour ? 'colour-current' : ''}`}
                                 onClick={() => props.changeTaskColour(props.focusTaskId, colour)}
-                                style={{background: colour}}
+                                style={colour !== props.focusTask.colour ?
+                                    { background: colour, border: "none" } :
+                                    { background: '#fff', border: `${colour} solid 5px` }
+                                }
 
-                                whileHover={{scale: 1.1, border: "#fff solid 2px" }}
-                                transition={{type: "spring", stiffness: 300, damping: 20,
+                                whileHover={colour !== props.focusTask.colour ?
+                                    {scale: 1.1, border: "#fff solid 2px" } :
+                                    {scale: 1.1, border: `${colour} solid 5px` }
+                                }
+                                transition={{type: "spring", stiffness: 300, damping: 20, duration: 1,
                                     border: {duration: 0}, }
                                 }
                             />
