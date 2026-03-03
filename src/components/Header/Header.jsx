@@ -26,7 +26,8 @@ export const Header = ( props ) => {
             {/* colour picker */}
             {props.focusTaskId && (
                 <div className={'task-customization'} onPointerDown={(e) => e.stopPropagation()}>
-                    <div className={'colour-palette'}>
+                    <p style={{ fontWeight: 600, margin: "-0.2rem 0 0.2rem 0" }} >Task Customization</p>
+                    <div className={'colour-palette'} style={{ '--palette-columns': 8 }}>
                         {props.colours.map((colour, index) =>
                             <motion.button
                                 key={index}

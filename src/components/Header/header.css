@@ -42,7 +42,7 @@
 
 .colour-palette {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(var(--palette-columns), 1fr);
 }
 
 .colour-choice {
@@ -67,7 +67,6 @@
     appearance: none;
     background: none;
 }
-/*.colour-picker::-webkit-color-swatch-wrapper{ padding: 0; }*/
 .colour-picker::-webkit-color-swatch{
     border: none;
     border-radius: var(--border-radius);

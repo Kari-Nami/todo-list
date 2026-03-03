@@ -1,10 +1,10 @@
 import './homepage.css'
-import '../../components/Header/header.css'
+import '../Header/header.css'
 import React, {useRef} from "react";
-import {Board} from "../../components/Board/Board.jsx";
+import {Board} from "../Board/Board.jsx";
 import {useTasks} from "../../hooks/useTasks.js";
 import {useColours} from "../../hooks/useColours.js";
-import {Header} from "../../components/Header/Header.jsx";
+import {Header} from "../Header/Header.jsx";
 
 function Homepage() {
 
