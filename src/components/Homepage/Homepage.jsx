@@ -14,12 +14,14 @@ function Homepage() {
         tasks,
         focusTaskId, setFocusTaskId,
         focusTask,
+        focusTextField, setFocusTextField,
         addTask,
         deleteTask,
         updateTaskLocation,
         resizeTask,
         updateTaskContent,
         changeTaskColour,
+        changeFieldFontColour,
         bringTaskToFront
     } = useTasks()
 
@@ -28,7 +30,7 @@ function Homepage() {
     const handleAddTask = () => {
         const task_w = 150
         const task_h = 150
-        const defaultColour = colours[10]
+        const defaultColour = colours[0]
         let x = 0
         let y = 0
 
@@ -52,6 +54,7 @@ function Homepage() {
                 changeTaskColour={changeTaskColour}
                 focusTaskId={focusTaskId}
                 focusTask={focusTask}
+                changeFieldFontColour={changeFieldFontColour}
             />
 
             <div className={"board-container"}>
@@ -64,6 +67,9 @@ function Homepage() {
                     updateTaskContent={updateTaskContent}
                     bringToFront={bringTaskToFront}
                     focusTaskId={focusTaskId}
+                    changeFieldFontColour={changeFieldFontColour}
+                    focusTextField={focusTextField}
+                    setFocusTextField={setFocusTextField}
                 />
             </div>
         </div>

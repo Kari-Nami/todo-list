@@ -27,18 +27,18 @@ export const Header = ( props ) => {
             {props.focusTaskId && (
                 <div className={'task-customization'} onPointerDown={(e) => e.stopPropagation()}>
                     <p style={{ fontWeight: 600, margin: "-0.2rem 0 0.2rem 0" }} >Task Customization</p>
-                    <div className={'colour-palette'} style={{ '--palette-columns': 8 }}>
+                    <div className={'colour-palette'} style={{ '--palette-columns': 5 }}>
                         {props.colours.map((colour, index) =>
                             <motion.button
                                 key={index}
-                                className={`colour-choice ${colour === props.focusTask.colour ? 'colour-current' : ''}`}
+                                className={`colour-choice ${colour === props.focusTask.backgroundColour ? 'colour-current' : ''}`}
                                 onClick={() => props.changeTaskColour(props.focusTaskId, colour)}
-                                style={colour !== props.focusTask.colour ?
+                                style={colour !== props.focusTask.backgroundColour ?
                                     { background: colour, border: "none" } :
                                     { background: '#fff', border: `${colour} solid 5px` }
                                 }
 
-                                whileHover={colour !== props.focusTask.colour ?
+                                whileHover={colour !== props.focusTask.backgroundColour ?
                                     {scale: 1.1, border: "#fff solid 2px" } :
                                     {scale: 1.1, border: `${colour} solid 5px` }
                                 }
@@ -51,7 +51,7 @@ export const Header = ( props ) => {
                     <input
                         className={'colour-picker'}
                         type={'color'}
-                        value={props.focusTask.colour}
+                        value={props.focusTask.backgroundColour}
                         onChange={(e) => props.changeTaskColour(props.focusTaskId, e.target.value)}
                         onPointerDown={(e) => e.stopPropagation()}
                     />

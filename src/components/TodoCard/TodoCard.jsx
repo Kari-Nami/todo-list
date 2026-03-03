@@ -15,7 +15,7 @@ export const TodoCard = ( props ) => {
     const height = task.h
 
     const isBackgroundDark = useMemo(() => {
-        const colour = task.colour.match(/#[0-9a-fA-F]{6}/)[0]
+        const colour = task.backgroundColour
         const luminosity = (
             parseInt(colour.slice(1, 3), 16)*0.299 +
             parseInt(colour.slice(3, 5), 16)*0.587 +
@@ -24,14 +24,21 @@ export const TodoCard = ( props ) => {
 
         return luminosity < 0.75
 
-    }, [task.colour])
+    }, [task.backgroundColour])
 
-    const fontColour = isBackgroundDark ? '#fff' : '#000'
+    useEffect(() => {
+        console.log("focus text field:", props.focusTextField)
+    }, [props.focusTextField]);
 
-    const backgroundHex = task.colour.match(/#[0-9a-fA-F]{6}/)[0]
+    const defaultFontColour = isBackgroundDark ? '#fff' : '#000'
+
+    const backgroundHex = task.backgroundColour
     const r = parseInt(backgroundHex.slice(1, 3), 16)
     const g = parseInt(backgroundHex.slice(3, 5), 16)
     const b = parseInt(backgroundHex.slice(5, 7), 16)
+
+    // task.nameFontColour = "#ff0000"
+    // task.contentFontColour = "#00ff00"
 
     const taskReference = useRef(null)
 
@@ -63,7 +70,7 @@ export const TodoCard = ( props ) => {
             }}
 
             style={{
-                background: `linear-gradient( 135deg, ${task.colour} calc(100% - var(--corner-size) * 0.7), transparent 0 )`,
+                background: `linear-gradient( 135deg, ${task.backgroundColour} calc(100% - var(--corner-size) * 0.7), transparent 0 )`,
                 x: task.x,
                 y: task.y,
                 width: width,
@@ -71,13 +78,15 @@ export const TodoCard = ( props ) => {
                 zIndex: task.z,
 
                 '--bg-r': r, '--bg-g': g, '--bg-b': b,
-                '--font-colour': fontColour,
+                '--name-font-colour': task.nameFontColour ?? defaultFontColour,
+                '--content-font-colour': task.contentFontColour ?? defaultFontColour
         }}
         >
             <div className='task-content'>
                 <input
                     className='task-title'
                     value={task.name || ''}
+                    onClick={() => props.setFocusTextField('name')}
                     placeholder={'task name'}
                     onChange={(e) => props.updateTaskContent(task.id, 'name', e.target.value)}
                 />
@@ -85,6 +94,7 @@ export const TodoCard = ( props ) => {
                 <textarea
                     className='task-details'
                     value={task.content || ''}
+                    onClick={() => props.setFocusTextField('content')}
                     placeholder={'add details...'}
                     onChange={(e) => props.updateTaskContent(task.id, 'content', e.target.value)}
 

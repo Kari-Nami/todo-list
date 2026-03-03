@@ -17,6 +17,9 @@ export const Board = ( props ) => {
                     updateTaskContent={props.updateTaskContent}
                     bringToFront={props.bringToFront}
                     focusTaskId={props.focusTaskId}
+                    changeFieldFontColour={props.changeFieldFontColour}
+                    focusTextField={props.focusTextField}
+                    setFocusTextField={props.setFocusTextField}
                 />
             ))}
         </div>

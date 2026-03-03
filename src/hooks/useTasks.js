@@ -5,6 +5,7 @@ import {loadTasks} from "../services/taskService.js";
 export function useTasks() {
     const [tasks, setTasks] = useState((e) => loadTasks())
     const [focusTaskId, setFocusTaskId] = useState(null)
+    const [focusTextField, setFocusTextField] = useState(null)
 
     const focusTask = focusTaskId? (tasks.find((task) => task.id === focusTaskId)) : null
 
@@ -22,6 +23,7 @@ export function useTasks() {
     const deleteTask = (id) => {
         setTasks(taskService.deleteTask(tasks, id))
         if (focusTaskId === id) setFocusTaskId(null)
+        if (focusTextField) setFocusTextField(null)
     }
 
     const updateTaskLocation = (id, offset) => {
@@ -40,6 +42,10 @@ export function useTasks() {
         setTasks(taskService.changeColour(tasks, id, newColour))
     }
 
+    const changeFieldFontColour = (id, field, newColour) => {
+        setTasks(taskService.changeFieldFontColour(tasks, id, field, newColour))
+    }
+
     const bringTaskToFront = (id) => {
         setTasks(taskService.bringTaskToFront(tasks, id))
         setFocusTaskId(id)
@@ -49,12 +55,14 @@ export function useTasks() {
         tasks,
         focusTaskId, setFocusTaskId,
         focusTask,
+        focusTextField, setFocusTextField,
         addTask,
         deleteTask,
         updateTaskLocation,
         resizeTask,
         updateTaskContent,
         changeTaskColour,
+        changeFieldFontColour,
         bringTaskToFront
     }
 }

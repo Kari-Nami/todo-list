@@ -23,7 +23,9 @@ export function createTask(tasks, {x, y}, defaultColour) {
         id: id,
         name: "",
         content: "",
-        colour: defaultColour,
+        backgroundColour: defaultColour,
+        nameFontColour: null,
+        contentFontColour: null,
         x,
         y,
         w: task_w,
@@ -62,7 +64,11 @@ export function updateContent(tasks, id, field, newValue) {
 }
 
 export function changeColour(tasks, id, newColour) {
-    return changeOneTask(tasks, id, {colour: newColour})
+    return changeOneTask(tasks, id, {backgroundColour: newColour})
+}
+
+export function changeFieldFontColour(tasks, id, field, newColour) {
+    return changeOneTask(tasks, id, {[`${field}FontColour`]: newColour})
 }
 
 export function bringTaskToFront(tasks, id) {
